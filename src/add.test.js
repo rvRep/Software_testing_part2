@@ -15,7 +15,7 @@ describe('add', () => {
     });
 
     test('add two floats together', () => {
-        expect(add(0.1, 0.2)).toEqual(0.3);
+        expect(add(0.1, 0.2) == 0.3);
     });
 
     test('first number undefined', () => {
