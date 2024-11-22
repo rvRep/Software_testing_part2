@@ -1,4 +1,6 @@
 import memoize from './memoize';
+import {jest} from '@jest/globals';
+
 
 describe('memoize', () => {
     test('memoizes the result of a function with a single argument', () => {

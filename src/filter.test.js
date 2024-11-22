@@ -1,4 +1,6 @@
 import filter from './filter';
+import {jest} from '@jest/globals';
+
 
 describe('filter', () => {
     test('filters an array of objects based on a predicate', () => {
