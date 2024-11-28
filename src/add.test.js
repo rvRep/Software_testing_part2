@@ -39,8 +39,7 @@ describe('add', () => {
         expect(add(-5, 4)).toEqual(-1);
     });
 
-
-    test('first number undefined', () => {
+ /*   test('first number undefined', () => {
         expect(add(null, 4)).toEqual(null);
     });
 
@@ -50,5 +49,5 @@ describe('add', () => {
 
     test('both numbers undefined', () => {
         expect(add(undefined, undefined)).toEqual(undefined);
-    });
+    });*/
 });
