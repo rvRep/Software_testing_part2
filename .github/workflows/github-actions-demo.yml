@@ -15,6 +15,8 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -28,6 +30,13 @@ jobs:
       run: |
         npm test -- --coverage
         cat ./coverage/lcov.info | npx coveralls
+
+    - name: Debug environment
+      run: |
+        echo "Repo Token: ${{ secrets.COVERALLS_REPO_TOKEN }}"
+        git remote -v
+        git rev-parse HEAD
+
         
       continue-on-error: true
     - name: Submit coverage to Coveralls
