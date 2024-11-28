@@ -1,4 +1,4 @@
-import countBy from "./countBy";
+import countBy from "../countBy";
 
 describe('countBy', () => {
 
