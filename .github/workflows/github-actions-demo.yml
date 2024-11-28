@@ -10,32 +10,27 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
-    name: build
+  test:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [20.17]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
-      continue-on-error: true
+        node-version: '16'
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@v2
+    - name: Install dependencies
+      run: npm install
 
-    - name: npm install, make test-coverage
+    - name: Run tests with coverage
       run: |
-        npm install
-        make test-coverage
+        npm test -- --coverage
+        cat ./coverage/lcov.info | npx coveralls
+
+    - name: Submit coverage to Coveralls
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+      run: |
+        cat ./coverage/lcov.info | npx coveralls
