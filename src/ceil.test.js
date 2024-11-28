@@ -26,4 +26,24 @@ describe('ceil', () => {
         expect(ceil(6040, 0)).toEqual(6040);
     });
 
+    test('round up a zero', () => {
+        expect(ceil(0,0)).toEqual(0);
+    })
+
+    test('ceil a negative number with default precision', () => {
+        expect(ceil(-4.006)).toEqual(-4);
+    });
+
+    test('ceil a very small number', () => {
+        expect(ceil(0.0004, 3)).toEqual(0.001);
+    });
+
+    test('ceil a very large number', () => {
+        expect(ceil(1e10 + 0.4)).toEqual(1e10 + 1);
+    });
+
+    test('ceil a number with negative precision greater than the number of integer places', () => {
+        expect(ceil(123, -5)).toEqual(100000);
+    });
+
 });

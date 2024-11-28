@@ -28,10 +28,14 @@ describe('capitalize', () => {
     });
 
     test('capitalize an undefined string' , () => {
-        expect(capitalize(undefined)).toEqual(undefined);
+        expect(capitalize(undefined)).toEqual("Undefined");
     });
 
     test('capitalize string where first letter is small and others big', () => {
         expect(capitalize('tEST STRING')).toEqual('Test string');
+    });
+
+    test('capitalize a string with multiple words', () => {
+        expect(capitalize('test string with multiple words')).toEqual('Test string with multiple words');
     });
 });
