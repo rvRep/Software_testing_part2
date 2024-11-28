@@ -1,4 +1,4 @@
-import countBy from "./countBy";
+import countBy from "../countBy";
 
 describe('countBy', () => {
 
@@ -16,9 +16,9 @@ describe('countBy', () => {
      ];
 
     test('Counting user collection according to active-value', () => {
-        expect(countBy(testCollection1, value => value.active)).toEqual({ 'true': 1, 'false': 0 });
+        expect(countBy(testCollection1, value => value.active)).toEqual({ 'true': 2, 'false': 1 });
     });
-    /*
+
     test('Counting collection according to number-value', () => {
         expect(countBy(testCollection2, value => value.number)).toEqual({4 : 2, 7 : 1, 0 : 1});
     })
@@ -32,6 +32,6 @@ describe('countBy', () => {
 
     test('count over an empty collection', () => {
         expect(countBy([], value => value.name)).toEqual({});
-    });*/
+    });
 
 });

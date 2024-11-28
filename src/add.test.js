@@ -38,9 +38,9 @@ describe('add', () => {
     test('add two negative integers', () => {
         expect(add(-5, 4)).toEqual(-1);
     });
-
- /*   test('first number undefined', () => {
-        expect(add(null, 4)).toEqual(null);
+    
+    test('first number undefined', () => {
+        expect(add(undefined, 4)).toEqual(undefined);
     });
 
     test('sedond number undefined', () => {
@@ -49,5 +49,5 @@ describe('add', () => {
 
     test('both numbers undefined', () => {
         expect(add(undefined, undefined)).toEqual(undefined);
-    });*/
+    });
 });
