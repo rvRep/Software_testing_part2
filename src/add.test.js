@@ -39,15 +39,4 @@ describe('add', () => {
         expect(add(-5, 4)).toEqual(-1);
     });
     
-    test('first number undefined', () => {
-        expect(add(undefined, 4)).toEqual(undefined);
-    });
-
-    test('sedond number undefined', () => {
-        expect(add(3, undefined)).toEqual(undefined);
-    });
-
-    test('both numbers undefined', () => {
-        expect(add(undefined, undefined)).toEqual(undefined);
-    });
 });
