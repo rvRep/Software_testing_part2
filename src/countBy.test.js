@@ -15,7 +15,7 @@ describe('countBy', () => {
         {'number' : 0, 'name' : 'Antti', 'works' : true}
      ];
 
- /*   test('Counting user collection according to active-value', () => {
+    test('Counting user collection according to active-value', () => {
         expect(countBy(testCollection1, value => value.active)).toEqual({ 'true': 2, 'false': 1 });
     });
 
@@ -25,7 +25,7 @@ describe('countBy', () => {
 
     test('Counting collection according to works-value', () => {
         expect(countBy(testCollection2, value => value.works)).toEqual({'true' : 4});
-    });*/
+    });
     test('Counting by value that doesnt exist', () => {
         expect(countBy(testCollection1, value => value.name)).toEqual({undefined : 2});
     });
