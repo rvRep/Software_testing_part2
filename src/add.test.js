@@ -49,5 +49,9 @@ describe('add', () => {
     test('both numbers undefined', () => {
         expect(add(undefined, undefined)).toEqual(undefined);
     });
+
+    test('Test adding string', () => {
+        expect(add("This ","works")).toEqual("This works");
+    })
     
 });
