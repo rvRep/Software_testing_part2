@@ -48,4 +48,29 @@ describe('eq', () => {
     expect(eq(null, null)).toBe(true);
     expect(eq(undefined, null)).toEqual(true);
   });
+
+  test('Compare two empty values', () => {
+      expect(eq({},{})).toBe(false);
+      expect(eq([],[])).toBe(false);
+  });
+
+  test('Compare mixed types', () => {
+      expect(eq({}, 1)).toBe(false);
+      expect(eq([], 1)).toBe(false);
+      expect(eq('test', 1)).toBe(false);
+      expect(eq('true', true)).toBe(false);
+  });
+
+  test('Compare with identical and different references', () => {
+    const square1 = n => n*n;
+    const square2 = n => n*n;
+    expect(eq(square1,square1)).toBe(true);
+    expect(eq(square1, square2)).toBe(false);
+  });
+
+  test('Compare with special primitives', () => {
+      expect(eq(Infinity, -Infinity)).toBe(false);
+      expect(eq(0,-0)).toBe(true);
+  });
+
 });
