@@ -1,4 +1,6 @@
 import map from './map';
+import {expect, jest} from '@jest/globals';
+
 
 
 function unefinedFunction() {
@@ -13,8 +15,9 @@ describe('map', () => {
 
     const testArray3 = [1, 2, 3, 4];
 
+    const square = n => n*n;
+
     test('Test mapping an array of integers to square', () => {
-        const square = n => n*n;
         expect(map(testArray1, square)).toEqual([16, 36, 0]);
     });
 
@@ -24,7 +27,6 @@ describe('map', () => {
     });
 
     test('Test mapping function over an empty array', () => {
-        const square = n => n*n;
         expect(map([], square)).toEqual([]);
     });
 
@@ -34,7 +36,6 @@ describe('map', () => {
     });
 
     test('Test mapping function over undefined type', () => {
-        const square = n => n*n;
         expect(map(undefined, square)).toEqual([]);
     });
 
@@ -55,5 +56,12 @@ describe('map', () => {
     test('Test mapping with a function that uses the entire collection', () => {
         const sumAll = (n, index, array) => array.reduce((sum, val) => sum + val, 0);
         expect(map(testArray3, sumAll)).toEqual([10, 10, 10, 10]);
+    });
+
+    test('Test handing non-numeric input to numeric functions', () => {
+        const stringArray = ["these", "are", "not", "numbers"];
+        const undefinedArray = [undefined, undefined, undefined, undefined];
+        expect(map(stringArray, square)).toEqual([NaN, NaN, NaN, NaN]);
+        expect(map(undefinedArray, square)).toEqual([NaN, NaN, NaN, NaN]);        
     });
 });
